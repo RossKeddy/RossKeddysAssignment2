@@ -1,0 +1,13 @@
+<% include partials/header.ejs %>
+
+        <h1>User Details</h1>
+        <form method="post">
+          <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">Username:</label>
+            <input name="username" id="username"
+                   value="<%= account.username %>" />
+          </div>
+          <button class="btn btn-success col-sm-offset-2">Save</button>
+        </form>
+
+<% include partials/footer.ejs %>

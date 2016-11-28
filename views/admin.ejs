@@ -1,0 +1,18 @@
+<% include partials/header.ejs %>
+
+                <h1><%= title %></h1>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Accounts</th>
+                        <th>Edit</th>
+                        <th>Purge</th>
+                    </tr>
+                    <% for (var i = 1; i < accounts.length; i++) { %>
+                    <tr>
+                        <td><%= accounts[i].username %></td>
+                        <td><a href="/admin/<%= accounts[i]._id %>">Edit</a></td>
+                        <td><a href="/admin/delete/<%= accounts[i]._id %>" class="confirmation">Delete</a></td>
+                    </tr>
+                    <% } %>
+                </table>
+<% include partials/footer.ejs %>
