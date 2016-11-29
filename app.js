@@ -10,6 +10,7 @@ var users = require('./routes/users');
 
 var accounts = require('./routes/admin');
 
+
 var app = express();
 
 // connect to mongodb
@@ -39,6 +40,47 @@ app.use(passport.session());
 // connect passport to the Account model to talk to mongodb
 var Account = require('./models/account');
 passport.use(Account.createStrategy());
+
+// facebook auth configuration
+var facebookStrategy = require('passport-facebook').Strategy;
+
+passport.use(new facebookStrategy({
+  clientID: config.ids.facebook.clientID,
+  clientSecret: config.ids.facebook.clientSecret,
+  callbackURL: config.ids.facebook.callbackURL
+},
+function(accessToken, refreshToken, profile, cb)
+{
+  // check if mongodb already has this user
+  Account.findOne({ oauthID: profile.id }, function(err, user) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      if (user !== null) {
+        // this user has already registered via facebook, so continue
+        cb(null, user);
+      }
+      else {
+        // user is new to us, so save them to accounts collection
+        user = new Account({
+          oauthID: profile.id,
+          username: profile.displayName,
+          created: Date.now()
+        });
+
+        user.save(function(err) {
+          if (err) {
+            console.log(err);
+          }
+          else {
+            cb(null, user);
+          }
+        });
+      }
+    }
+  });
+}));
 
 // manage sessions through the db
 passport.serializeUser(Account.serializeUser());
@@ -90,6 +132,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+app.listen(3000);
 
 console.log("Connected - running on port 3000");
 console.log("Created by Ross Keddy");

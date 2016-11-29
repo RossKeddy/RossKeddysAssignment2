@@ -3,11 +3,13 @@
  */
 module.exports = {
   db: 'mongodb://RossKeddy:password@ds111748.mlab.com:11748/maindata',
-  secret: 'There are no stupid questions, just stupid people'
-  /*ids: {
-    facebook: {
-    },
-    github: {
-    }
-  }*/
+  secret: 'There are no stupid questions, just stupid people',
+  ids: {
+	  facebook: {
+		clientID: '1160831130633235',
+		clientSecret: '75bd10c5d5096c2c6d888bafceb5653d',
+		callbackURL: 'http://localhost:3000/facebook/callback'
+	  }
+  }
 };
+/*https://rosskeddyassignment2.herokuapp.com/facebook/callback*/

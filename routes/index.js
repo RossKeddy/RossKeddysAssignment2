@@ -14,6 +14,14 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/datalist', function(req, res, next) {
+  res.render('datalist', {
+    title: 'Business Data',
+    message: 'Welcome to ConnectMe',
+    user: req.user
+  });
+});
+
 /* GET register page */
 router.get('/register', function(req, res, next) {
   res.render('register', {
@@ -64,6 +72,20 @@ router.post('/login', passport.authenticate('local', {
 router.get('/logout', function(req, res, next) {
   req.logout();
   res.redirect('/login');
+});
+
+/* GET /facebook */
+router.get('/facebook', passport.authenticate('facebook'),
+function(req, res, next) {
+});
+
+/* GET /facebook/callback */
+router.get('/facebook/callback', passport.authenticate('facebook', {
+  failureRedirect: '/login',
+  failureMessage: 'Invalid Login'
+}), function(req, res, next) {
+  // show the home page
+  res.redirect('/');
 });
 
 module.exports = router;

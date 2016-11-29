@@ -1,7 +1,7 @@
 <% include partials/header.ejs %>
                 <h1>Register</h1>
 
-                <form method="post">
+                <form method="post" id="registerForm">
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">Username: *</label>
                         <input name="username" id="username" required />
@@ -18,7 +18,6 @@
                         <button class="btn btn-success col-sm-offset-2">Register</button>
                         <hr />
                         Already have an account?  <a href="/login" title="Login">Login</a>
-                    </div>
                 </form>
 
 <% include partials/footer.ejs %>
