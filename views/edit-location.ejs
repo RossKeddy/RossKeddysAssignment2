@@ -1,0 +1,33 @@
+<% include partials/header.ejs %>
+
+<h1>Location Details</h1>
+
+<form method="post">
+<div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Name:</label>
+        <input name="name" id="name" required value="<%= location.name %>"/>
+    </div>
+    <div class="form-group">
+        <label for="city" class="col-sm-2 control-label">City:</label>
+        <input name="city" id="city" required value="<%= location.city %>"/>
+    </div>
+    <div class="form-group">
+        <label for="size" class="col-sm-2 control-label">Size:</label>
+        <input name="size" id="size" value="<%= location.size %>"/>
+    </div>
+    <div class="form-group">
+        <label for="indoor" class="col-sm-2 control-label">Indoor?:</label>
+        <input name="indoor" id="indoor" required value="<%= location.indoor %>"/>
+    </div>
+    <div class="form-group">
+        <label for="outdoor" class="col-sm-2 control-label">Outdoor?:</label>
+        <input name="outdoor" id="outdoor" required value="<%= location.outdoor %>"/>
+    </div>
+    <div class="form-group">
+        <label for="website" class="col-sm-2 control-label">Website:</label>
+        <input name="website" id="website" value="<%= location.website %>"/>
+    </div>
+	
+  <button class="btn btn-success col-sm-offset-2">Save</button>
+</form>
+<% include partials/footer.ejs %>

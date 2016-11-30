@@ -14,15 +14,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET paintballdata page. */
-router.get('/datalist', function(req, res, next) {
-  res.render('datalist', {
-    title: 'Paintball Arenas',
-    message: 'Welcome',
-    user: req.user
-  });
-});
-
 /* GET About page. */
 router.get('/about', function(req, res, next) {
   res.render('about', {
