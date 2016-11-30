@@ -118,6 +118,7 @@ router.post('/:_id', isLoggedIn, function(req, res, next) {
         _id: _id,
         name: req.body.name,
         city: req.body.city,
+        size: req.body.size,
         indoor: req.body.indoor,
         outdoor: req.body.outdoor,
         website: req.body.website
