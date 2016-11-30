@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-// link to the Account model
+// Account model
 var Account = require('../models/account');
 var passport = require('passport');
 
-/* GET home page. */
+/* GET Index page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'Home',
@@ -33,7 +33,7 @@ router.get('/register', function(req, res, next) {
 
 /* POST register page */
 router.post('/register', function(req, res, next) {
-  // use passport and the Account model to save the new user
+  //save the new user
   Account.register(new Account( {
           username: req.body.username
   }),
@@ -51,7 +51,7 @@ router.post('/register', function(req, res, next) {
 /* GET login page */
 router.get('/login', function(req, res, next) {
 
-  // get session messages if there are any
+  // get session messages
   var messages = req.session.messages || [];
 
   res.render('login', {

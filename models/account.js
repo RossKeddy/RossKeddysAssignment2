@@ -1,10 +1,9 @@
-// Creates the schema for local
-// users
+// Creates the schema for users
 // Ross Keddy
 
 var mongoose = require('mongoose');
 
-// reference passport-local-mongoose so passport can use this model for user authentication
+// reference passport-local-mongoose for user authentication
 var plm = require('passport-local-mongoose');
 
 var AccountSchema = new mongoose.Schema({

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-// reference the Location model
+// reference Location model model
 var Location = require('../models/location');
 
 // auth check
@@ -46,7 +46,6 @@ router.get('/add', isLoggedIn, function(req, res, next) {
 
 /* POST /locations/add - process form submission */
 router.post('/add', isLoggedIn, function(req, res, next) {
-    // use the Location model and call the Mongoose create function
     Location.create( {
         name: req.body.name,
         city: req.body.city,
@@ -69,10 +68,9 @@ router.post('/add', isLoggedIn, function(req, res, next) {
 
 /* GET /locations/delete/:_id - run a delete on selected location */
 router.get('/delete/:_id', isLoggedIn, function(req, res, next) {
-    // read the id value from the url
     var _id = req.params._id;
 
-    // use mongoose to delete this location
+    // delete this record
     Location.remove( { _id: _id }, function(err) {
         if (err) {
             console.log(err);
@@ -114,7 +112,7 @@ router.post('/:_id', isLoggedIn, function(req, res, next) {
     // get the id from the url
     var _id = req.params._id;
 
-    // instantiate a new Location object & populate it from the form
+    // instantiate a new Location object
     var location = new Location( {
         _id: _id,
         name: req.body.name,
@@ -125,7 +123,7 @@ router.post('/:_id', isLoggedIn, function(req, res, next) {
         website: req.body.website
     });
 
-    // save the update using Mongoose
+    // save the update
     Location.update( { _id: _id }, location, function(err) {
        if (err) {
            console.log(err);
@@ -139,5 +137,4 @@ router.post('/:_id', isLoggedIn, function(req, res, next) {
     });
 });
 
-// make controller public
 module.exports = router;

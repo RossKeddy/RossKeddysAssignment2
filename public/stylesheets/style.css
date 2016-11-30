@@ -2,13 +2,14 @@
  * style.css
  * Ross Keddy / 200314382
  * http://www.rosskeddy.me/
+ * One day I'll call my file 'styles'...
  */
 
 body {
     overflow-x: hidden;
     background: url(../images/paintballbackground1.jpg);
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
     color: #000000;
  }
 
@@ -17,6 +18,10 @@ body {
     font-size: 18px;
     line-height: 1.5;
     max-width: 800px;
+}
+
+.small {
+    font-size: 12px;
 }
 
 /* Toggle Styles */

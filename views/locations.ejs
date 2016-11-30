@@ -7,7 +7,7 @@
 else { %>
     <a href="/login">Login to Contribute</a>
 <% } %>
-<table class="table table-bordered">
+<table class="table table-bordered" style="background-color:white">
     <tr>
         <th>Name</th>
         <th>Location</th>
@@ -27,7 +27,7 @@ else { %>
         <td><%= locations[i].size %></td>
         <td><%= locations[i].indoor %></td>
         <td><%= locations[i].outdoor %></td>
-        <td><%= locations[i].website %></td>
+        <td><a href="<%= locations[i].website %>"><%= locations[i].website %></a></td>
 
         <% if (user) { %>
             <td><a href="/locations/<%= locations[i]._id %>">Edit</a></td>

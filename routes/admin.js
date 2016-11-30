@@ -44,7 +44,7 @@ router.get('/delete/:_id', isLoggedIn, function(req, res, next) {
     // read the id value from the url
     var _id = req.params._id;
 
-    // use mongoose to delete this guy
+    // delete this guy
     Account.remove( { _id: _id }, function(err) {
         if (err) {
             console.log(err);

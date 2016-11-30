@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+//
 var accounts = require('./routes/admin');
 var locations = require('./routes/locations');
 
@@ -37,11 +38,11 @@ app.use(session( {
 app.use(passport.initialize());
 app.use(passport.session());
 
-// connect passport to the Account model to talk to mongodb
+// connect passport to the Account model
 var Account = require('./models/account');
 passport.use(Account.createStrategy());
 
-// facebook auth configuration
+// facebook configuration
 var facebookStrategy = require('passport-facebook').Strategy;
 
 passport.use(new facebookStrategy({
@@ -51,14 +52,14 @@ passport.use(new facebookStrategy({
 },
 function(accessToken, refreshToken, profile, cb)
 {
-  // check if mongodb already has this user
+  // check if user exists
   Account.findOne({ oauthID: profile.id }, function(err, user) {
     if (err) {
       console.log(err);
     }
     else {
       if (user !== null) {
-        // this user has already registered via facebook, so continue
+        // this user has already registered via facebook, continue
         cb(null, user);
       }
       else {
@@ -138,7 +139,7 @@ app.listen(3000);
 console.log(" ");
 console.log("******************************************************************");
 console.log("     Connected - running on port 3000");
-console.log("     v1.6 Running");
+console.log("     v1.7 Stable Running");
 console.log("     COMP2068-Assignment2");
 console.log("     Created by Ross Keddy / 200314382");
 console.log("******************************************************************");
