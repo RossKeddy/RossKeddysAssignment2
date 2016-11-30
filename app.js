@@ -134,17 +134,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-
-app.use(function(req, res, next) {
-
-    var user_ip = false; if (req.headers['x-forwarded-for']) { user_ip = req.headers['x-forwarded-for'].split(', ')[0]; } user_ip = user_ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
-
-    console.log(user_ip +  " : " + req.sessionID);
-    // { clientIp: '127.0.0.1', clientIpRoutable: false }
-    next();
-});
-
 app.listen(3000);
 console.log(" ");
 console.log("******************************************************************");
