@@ -138,7 +138,7 @@ app.listen(3000);
 console.log(" ");
 console.log("******************************************************************");
 console.log("     Connected - running on port 3000");
-console.log("     v1.5 Running");
+console.log("     v1.6 Running");
 console.log("     COMP2068-Assignment2");
 console.log("     Created by Ross Keddy / 200314382");
 console.log("******************************************************************");
