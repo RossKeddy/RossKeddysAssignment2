@@ -50,6 +50,7 @@ router.post('/add', isLoggedIn, function(req, res, next) {
     Location.create( {
         name: req.body.name,
         city: req.body.city,
+        size: req.body.size,
         indoor: req.body.indoor,
         outdoor: req.body.outdoor,
 		website: req.body.website
