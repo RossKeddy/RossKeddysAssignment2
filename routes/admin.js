@@ -16,22 +16,27 @@ function isLoggedIn(req, res, next) {
 
 // GET handler for /admin
 router.get('/', isLoggedIn, function(req, res, next) {
-
-    // use account model to run a query
-    Account.find(function(err, accounts) {
-        if (err) {
-            console.log(err);
-            res.render('error');
-        }
-        else {
-            // load the admin view
-            res.render('admin', {
-                title: 'Administrate',
-                accounts: accounts,
-                user: req.user
-            });
-        }
-    });
+    if(req.user.username == 'SuperUser') //I only want superuser to control this.
+    {
+        // use account model to run a query
+        Account.find(function (err, accounts) {
+            if (err) {
+                console.log(err);
+                res.render('error');
+            }
+            else {
+                // load the admin view
+                res.render('admin', {
+                    title: 'Administrate Users',
+                    accounts: accounts,
+                    user: req.user
+                });
+            }
+        });
+    }
+    else {
+        res.redirect('/');
+    }
 });
 
 /* GET /admin/delete/:_id - run a delete on selected user */
@@ -43,7 +48,9 @@ router.get('/delete/:_id', isLoggedIn, function(req, res, next) {
     Account.remove( { _id: _id }, function(err) {
         if (err) {
             console.log(err);
-            res.render('error', {message: 'Delete Error'});
+            res.render('error', {
+				message: 'Delete Error'
+			});
         }
         res.redirect('/admin');
     });
@@ -58,7 +65,9 @@ router.get('/:_id', isLoggedIn, function(req, res, next) {
     Account.findById(_id,  function(err, account) {
         if (err) {
             console.log(err);
-            res.render('error', { message: 'Could not find that dude'});
+            res.render('error', { 
+				message: 'Could not find that dude'
+			});
         }
         else {
             // load the edit form
@@ -71,7 +80,7 @@ router.get('/:_id', isLoggedIn, function(req, res, next) {
     });
 });
 
-/* POST /admin/:_id - save form to process Account updates */
+/* POST /admin/:_id - save form to process account updates */
 router.post('/:_id', isLoggedIn, function(req, res, next) {
     // get the id from the url
     var _id = req.params._id;
@@ -79,21 +88,24 @@ router.post('/:_id', isLoggedIn, function(req, res, next) {
     // instantiate a new Account object & populate it from the form
     var account = new Account( {
         _id: _id,
-        password: req.body.password
+        username: req.body.username
     });
 
     // save the update using Mongoose
     Account.update( { _id: _id }, account, function(err) {
         if (err) {
             console.log(err);
-            res.render('error', {message: 'Could not Update That Dude'});
+            res.render('error', {
+				message: 'Could not Update That Dude'
+			});
         }
         else {
             res.redirect('/admin');
         }
     });
 });
-// make controller public
+
+// make controller available
 module.exports = router;
 
 

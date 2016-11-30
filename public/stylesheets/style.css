@@ -12,6 +12,13 @@ body {
     color: #000000;
  }
 
+.blurb {
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 800px;
+}
+
 /* Toggle Styles */
 
 #wrapper {

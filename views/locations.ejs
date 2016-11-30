@@ -1,0 +1,32 @@
+<% include partials/header.ejs %>
+
+<h1><%= title %></h1>
+<a href="/locations/add">Want to Contribute?</a>
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Size</th>
+        <th>Indoor</th>
+        <th>Outdoor</th>
+        <th>Website</th>
+        <th>Edit</th>
+        <th>Purge</th>
+    </tr>
+    <% for (var i = 0; i < locations.length; i++) { %>
+    <tr>
+        <td><%= locations[i].name %></td>
+        <td><%= locations[i].city %></td>
+        <td><%= locations[i].size %></td>
+        <td><%= locations[i].indoor %></td>
+        <td><%= locations[i].outdoor %></td>
+        <td><%= locations[i].website %></td>
+
+
+        <td><a href="/datalist/<%= locations[i]._id %>">Edit</a></td>
+        <td><a href="/datalist/delete/<%= locations[i]._id %>" class="confirmation">Delete</a></td>
+    </tr>
+    <% } %>
+</table>
+
+<% include partials/footer.ejs %>

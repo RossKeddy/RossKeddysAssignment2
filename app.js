@@ -9,7 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var accounts = require('./routes/admin');
-
+var locations = require('./routes/locations');
 
 var app = express();
 
@@ -101,6 +101,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/admin', accounts);
+app.use('/locations', locations);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -135,7 +136,9 @@ app.use(function(err, req, res, next) {
 
 app.listen(3000);
 
+console.log("*********************************");
 console.log("Connected - running on port 3000");
 console.log("Created by Ross Keddy");
+console.log("*********************************");
 
 module.exports = app;

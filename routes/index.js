@@ -9,15 +9,25 @@ var passport = require('passport');
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'Home',
-    message: 'Welcome to ConnectMe',
+    message: 'Welcome',
     user: req.user
   });
 });
 
+/* GET paintballdata page. */
 router.get('/datalist', function(req, res, next) {
   res.render('datalist', {
-    title: 'Business Data',
-    message: 'Welcome to ConnectMe',
+    title: 'Paintball Arenas',
+    message: 'Welcome',
+    user: req.user
+  });
+});
+
+/* GET About page. */
+router.get('/about', function(req, res, next) {
+  res.render('about', {
+    title: 'About',
+    message: 'This page was created by Ross Keddy for people that would like to join the paintball culture and find more information about the paintball locations around them',
     user: req.user
   });
 });
@@ -63,7 +73,7 @@ router.get('/login', function(req, res, next) {
 
 /* POST login page */
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/admin',
+  successRedirect: '/',
   failureRedirect: '/login',
   failureMessage: 'Invalid Login'  // stored in session.messages
 }));

@@ -7,6 +7,7 @@ var AccountSchema = new mongoose.Schema({
 	oauthID: String,
     created: Date
 });
+
 // used for configuring options
 AccountSchema.plugin(plm);
 

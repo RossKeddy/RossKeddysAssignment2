@@ -1,0 +1,33 @@
+<% include partials/header.ejs %>
+
+<h1>Add a Location!</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Name:</label>
+        <input name="name" id="name" required />
+    </div>
+    <div class="form-group">
+        <label for="city" class="col-sm-2 control-label">City:</label>
+        <input name="city" id="city" required />
+    </div>
+    <div class="form-group">
+        <label for="size" class="col-sm-2 control-label">Size:</label>
+        <input name="size" id="size" />
+    </div>
+    <div class="form-group">
+        <label for="indoor" class="col-sm-2 control-label">Indoor?:</label>
+        <input name="indoor" id="indoor" required />
+    </div>
+    <div class="form-group">
+        <label for="outdoor" class="col-sm-2 control-label">Outdoor?:</label>
+        <input name="outdoor" id="outdoor" required />
+    </div>
+    <div class="form-group">
+        <label for="website" class="col-sm-2 control-label">Website:</label>
+        <input name="website" id="website" />
+    </div>
+
+    <button class="btn btn-success col-sm-offset-2">Save</button>
+</form>
+<% include partials/footer.ejs %>
