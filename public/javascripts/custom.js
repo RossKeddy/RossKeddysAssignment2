@@ -5,7 +5,7 @@ $('.confirmation').on('click', function() {
     return confirm('Are you sure you want to delete this?');
 });
 
-//Uses the validation plugin to make sure the passwords are the same
+//Uses the JQuery validation plugin to make sure the passwords are the same
 var validator = $('#registerForm').validate({
     rules: {
         confirm: {

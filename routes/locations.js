@@ -15,7 +15,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // GET handler for /locations
-router.get('/', isLoggedIn, function(req, res, next) {
+router.get('/', function(req, res, next) {
 
     // use Location model to run a query
     Location.find(function(err, locations) {
@@ -93,7 +93,9 @@ router.get('/:_id', isLoggedIn, function(req, res, next) {
     Location.findById(_id,  function(err, location) {
       if (err) {
           console.log(err);
-          res.render('error', { message: 'Could not find that Location'});
+          res.render('error', {
+              message: 'Could not find that Location'
+          });
       }
         else {
           // load the edit form
@@ -125,7 +127,9 @@ router.post('/:_id', isLoggedIn, function(req, res, next) {
     Location.update( { _id: _id }, location, function(err) {
        if (err) {
            console.log(err);
-           res.render('error', {message: 'Could not Update Location'});
+           res.render('error', {
+               message: 'Could not Update Location'
+           });
        }
         else {
            res.redirect('/locations');

@@ -34,7 +34,9 @@ router.get('/register', function(req, res, next) {
 /* POST register page */
 router.post('/register', function(req, res, next) {
   // use passport and the Account model to save the new user
-  Account.register(new Account( { username: req.body.username }),
+  Account.register(new Account( {
+          username: req.body.username
+  }),
       req.body.password, function(err, account) {
         if (err) {
           console.log(err);

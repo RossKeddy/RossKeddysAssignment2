@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- ********************************************************************************
-# Ross Keddy's Assignment 2                                                         #
+# Ross Keddy's COMP2068 Assignment 2                                                #
 # Student at Georgian College                                                       #
 # Created by Ross Keddy / 200314382                                                 #
 # https://rosskeddy.me/                                                             #
@@ -17,6 +17,12 @@
 	<meta name="description" content="Assignment 2">
 	
 	<title><%= title %></title>
+
+
+    <% if (user) {
+        //I like to watch you...
+        console.log(user.username + " accessed " + title);
+    } %>
 
     <!-- CSS -->
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" type="text/css">
@@ -38,7 +44,7 @@
         <li class="sidebar-brand"><a href="/">Home</a></li>
         <% if (user) { %>
 
-            <% if (user.username == 'SuperUser') { %>
+            <% if (user.username == 'SuperUser') { //If SuperUser logs on, display this%>
                 <li><a href="/admin">Users</a></li>
             <% } %>
 
@@ -47,13 +53,14 @@
         <li><a href="/logout">Logout</a></li>
         <% }
         else { %>
+        <li><a href="/locations">Locations</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/register">Register</a></li>
         <li><a href="/login">Login</a></li>
         <% } %>
     </ul>
 
-    <!-- Now THIS is some spooky code -->
+    <!-- Now THIS is some spooky footer code -->
     <div class="navbar navbar-fixed-bottom">
         <ul class="sidebar-nav">
             <li>
@@ -63,6 +70,7 @@
     </div>
 </div><!-- /#sidebar-wrapper -->
 
+    <!--keep the same kind of theme throughout -->
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">

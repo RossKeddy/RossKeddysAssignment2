@@ -1,7 +1,12 @@
 <% include partials/header.ejs %>
 
 <h1><%= title %></h1>
-<a href="/locations/add">Want to Contribute?</a>
+<% if (user) { %>
+    <a href="/locations/add">Want to Contribute?</a>
+<% }
+else { %>
+    <a href="/login">Login to Contribute</a>
+<% } %>
 <table class="table table-bordered">
     <tr>
         <th>Name</th>
@@ -10,8 +15,10 @@
         <th>Indoor</th>
         <th>Outdoor</th>
         <th>Website</th>
-        <th>Edit</th>
-        <th>Purge</th>
+        <% if (user) { %>
+            <th>Edit</th>
+            <th>Purge</th>
+        <% } %>
     </tr>
     <% for (var i = 0; i < locations.length; i++) { %>
     <tr>
@@ -22,9 +29,10 @@
         <td><%= locations[i].outdoor %></td>
         <td><%= locations[i].website %></td>
 
-
-        <td><a href="/locations/<%= locations[i]._id %>">Edit</a></td>
-        <td><a href="/locations/delete/<%= locations[i]._id %>" class="confirmation">Delete</a></td>
+        <% if (user) { %>
+            <td><a href="/locations/<%= locations[i]._id %>">Edit</a></td>
+            <td><a href="/locations/delete/<%= locations[i]._id %>" class="confirmation">Delete</a></td>
+        <% } %>
     </tr>
     <% } %>
 </table>
